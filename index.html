@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#121416" />
+  <meta name="description" content="Розпродаж б/у запчастин з гаража · Івано-Франківськ · Audi Allroad, BMW E65, Mercedes W140, турбіна OM642" />
+  <title>Розпродаж з гаража · Івано-Франківськ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #121416;
+      --bg-elev: #1a1d21;
+      --line: #2c3138;
+      --text: #e8eaed;
+      --muted: #9aa3ad;
+      --accent: #d4a017;
+      --accent-dim: #a67c0a;
+      --ok: #6bbf8a;
+      --radius: 14px;
+      --pad: clamp(1rem, 4vw, 1.5rem);
+      --max: 40rem;
+      --font-display: "Syne", system-ui, sans-serif;
+      --font-body: "IBM Plex Sans", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--text);
+      background:
+        radial-gradient(120% 80% at 10% -10%, #2a2418 0%, transparent 55%),
+        radial-gradient(90% 60% at 100% 0%, #1a2228 0%, transparent 50%),
+        var(--bg);
+      min-height: 100dvh;
+      padding-bottom: 5.5rem;
+    }
+
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: #f0c14d; }
+
+    .wrap {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      padding: var(--pad);
+    }
+
+    /* Hero — one composition */
+    .hero {
+      padding: 2.25rem 0 1.25rem;
+      animation: rise 0.7s ease both;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: none; }
+    }
+    .hero-kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin: 0 0 0.6rem;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem, 8vw, 2.75rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.75rem;
+    }
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 28rem;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: rgba(255,255,255,0.03);
+    }
+    .chip strong { color: var(--text); font-weight: 600; }
+
+    /* Jump nav */
+    .toc {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      margin: 0 calc(-1 * var(--pad)) 1.5rem;
+      padding: 0.65rem var(--pad);
+      background: rgba(18, 20, 22, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      animation: rise 0.7s 0.1s ease both;
+    }
+    .toc-scroll {
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .toc-scroll::-webkit-scrollbar { display: none; }
+    .toc a {
+      flex: 0 0 auto;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .toc a:hover,
+    .toc a.is-active {
+      color: var(--bg);
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Listings */
+    .listing {
+      scroll-margin-top: 4rem;
+      margin-bottom: 1.25rem;
+      padding: 1.15rem 1.1rem 1.25rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      animation: rise 0.6s ease both;
+    }
+    .listing:nth-child(1) { animation-delay: 0.05s; }
+    .listing:nth-child(2) { animation-delay: 0.1s; }
+    .listing:nth-child(3) { animation-delay: 0.15s; }
+    .listing:nth-child(4) { animation-delay: 0.2s; }
+    .listing:nth-child(5) { animation-delay: 0.25s; }
+    .listing:nth-child(6) { animation-delay: 0.3s; }
+
+    .listing-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem 1rem;
+      margin-bottom: 0.65rem;
+    }
+    .listing h2 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.01em;
+      flex: 1 1 12rem;
+    }
+    .price {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+    .listing-title {
+      margin: 0 0 0.85rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .body {
+      white-space: pre-wrap;
+      font-size: 0.92rem;
+      color: #c8ced6;
+    }
+    .listing-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.6rem;
+      padding: 0.55rem 1rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, background 0.15s, border-color 0.15s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary {
+      background: var(--accent);
+      color: #121416;
+    }
+    .btn-primary:hover { background: #e0b020; color: #121416; }
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--text);
+    }
+    .btn-ghost:hover { border-color: var(--muted); color: var(--text); }
+    .btn[aria-disabled="true"] {
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .note {
+      margin: 2rem 0 1rem;
+      padding: 1rem;
+      border-left: 3px solid var(--accent-dim);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* Sticky contact */
+    .dock {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 30;
+      padding: 0.65rem var(--pad) calc(0.65rem + env(safe-area-inset-bottom));
+      background: rgba(18, 20, 22, 0.94);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--line);
+    }
+    .dock-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    .dock .btn { width: 100%; }
+
+    @media (min-width: 480px) {
+      .dock-inner { grid-template-columns: 1fr 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <p class="hero-kicker">Івано-Франківськ</p>
+      <h1>Розпродаж<br />з гаража</h1>
+      <p>
+        Скінченний склад б/у оригіналу — Audi Allroad, BMW E65, Mercedes W140 та дрібниця.
+        Усе на одній сторінці. Пишіть у месенджер або відкривайте оголошення на OLX.
+      </p>
+      <div class="hero-meta">
+        <span class="chip"><strong>6</strong> лотів</span>
+        <span class="chip">Нова Пошта · огляд</span>
+        <span class="chip">приватна особа</span>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="Лоти">
+      <div class="toc-scroll">
+        <a href="#turbo">Турбіна</a>
+        <a href="#reyka">Рейка</a>
+        <a href="#allroad">Allroad</a>
+        <a href="#e65">E65</a>
+        <a href="#w140">W140</a>
+        <a href="#misc">Залишки</a>
+      </div>
+    </nav>
+
+    <main id="listings">
+      <!-- CONFIG: set olx URLs in data-olx after you publish -->
+
+      <article class="listing" id="turbo" data-olx="">
+        <div class="listing-top">
+          <h2>Турбіна OM642</h2>
+          <span class="price">12 300 грн</span>
+        </div>
+        <p class="listing-title">Garrett 757608-0001 · Mercedes A6420900280 · GL / ML / Sprinter</p>
+        <div class="body">Продам турбіну Garrett з Mercedes GL 320 CDI (OM642).
+
+OEM / номери з бирки:
+• Mercedes A 642 090 02 80 (A6420900280)
+• Garrett 757608-0001 (на бирці 757608-1)
+• також маркування 765155-4
+• маркер на корпусі: GL 32 CDI
+
+Підходить (уточнюйте по VIN / номеру): Mercedes GL/ML/Sprinter/Vito та інші OM642 3.0 CDI — перевіряйте сумісність.
+
+Ціна: 12 300 грн. Торг у межах розумного.
+Огляд при отриманні (Нова Пошта). Фото реальні.</div>
+        <div class="listing-actions">
+          <a class="btn btn-primary js-olx" href="#" aria-disabled="true">OLX (скоро)</a>
+          <a class="btn btn-ghost js-ask" href="#contact">Написати про цю</a>
+        </div>
+      </article>
+
+      <article class="listing" id="reyka" data-olx="">
+        <div class="listing-top">
+          <h2>Рульова рейка</h2>
+          <span class="price">5 000 грн</span>
+        </div>
+        <p class="listing-title">Audi A6 C5 Allroad · 4B1 422 066 D · ZF</p>
+        <div class="body">Продам рульову рейку ZF / Audi.
+
+Номер: 4B1 422 066 D (4B1422066D)
+Авто-донор: Audi A6 Allroad C5 (~2000–2005)
+
+Шукайте також: рейка рульова Audi A6 C5, Allroad quattro, рульовий механізм 4B1.
+
+Ціна: 5 000 грн.
+Огляд при отриманні НП. Фото реальні.
+Перед покупкою скиньте VIN — підтвердимо сумісність.</div>
+        <div class="listing-actions">
+          <a class="btn btn-primary js-olx" href="#" aria-disabled="true">OLX (скоро)</a>
+          <a class="btn btn-ghost js-ask" href="#contact">Написати про цю</a>
+        </div>
+      </article>
+
+      <article class="listing" id="allroad" data-olx="">
+        <div class="listing-top">
+          <h2>Audi Allroad C5</h2>
+          <span class="price">від 500 грн</span>
+        </div>
+        <p class="listing-title">Кузов · ходова · моторна дрібниця · A6 Quattro 2.5 TDI</p>
+        <div class="body">Розборка / шрот Audi Allroad C5 · A6 Quattro 2.5 TDI (~2005). Оригінал б/у. Ціни фікс за позицією.
+
+КУЗОВ
+• Двері праві передні + задні (з ручками) — 50 USD
+• Кришка багажника + задній бампер (інв. 72/324/724) — 5 000 грн
+  (бейдж 2.5 TDI / 2.7 T — уточню фото)
+• Рамки дверей + скло + підйомники — 1 500 грн/шт
+• Бак пального Allroad 2.5 TDI (інв. 223) — 1 000 грн
+• Петлі капота Audi A6 C5 — 4B0 823 301 D / 302 D (також 8E0 823 301 G) — 600 грн/пара
+
+ХДОВА / ГАЛЬМА
+• Цапфи Audi/VW — 20 USD/шт
+• Приводи задні — 1 000 грн/компл.
+• Гальмівні диски передні НОВІ — 2 500 грн/компл.
+
+МОТОР / ПАЛИВО / ЕЛЕКТРИКА
+• Задній редуктор A6 Quattro / Allroad 2.5 TDI — 2 000 грн
+• Бачок омивача 4.4 L — 4A0 955 453 C — 500 грн
+• Котушки запалювання ~10 шт VW/Audi/Skoda 1.8T — 06A/06B/06F/06H/06L/036 905 115… — 550 грн/шт
+• Форсунки + паливна рампа Bosch — 0 280 150 464 (0280150464) — 1 200 грн
+• Датчики ABS Bosch/Audi — 0 265 006 780 / 782 / 788 / 712; 4Z7 927 807 G — 15 USD/шт
+• Корпус повітряного фільтра Audi A6 / Allroad — 800 грн
+
+Рейка 4B1… і турбіна OM642 — окремі лоти вище.</div>
+        <div class="listing-actions">
+          <a class="btn btn-primary js-olx" href="#" aria-disabled="true">OLX (скоро)</a>
+          <a class="btn btn-ghost js-ask" href="#contact">Написати про цю</a>
+        </div>
+      </article>
+
+      <article class="listing" id="e65" data-olx="">
+        <div class="listing-top">
+          <h2>BMW E65 / E66</h2>
+          <span class="price">договірна</span>
+        </div>
+        <p class="listing-title">Крила · підвіска · ГУР · Guibo 1229754 · 7 серія</p>
+        <div class="body">Запчастини BMW 7 Series E65 / E66 (2001–2004 дорестайл і сумісні). Оригінал б/у.
+
+КУЗОВ / ПІДВІСКА
+• Крила передні: 2 правих + 2 лівих (4 шт), маркер E65 L — 75 USD/шт
+• Dynamic Drive стабілізатори (BMW 3712…) — 2 000 грн/компл.
+• Цапфи: задня ліва + передня права — 20 USD/шт
+• Важелі задньої підвіски (пара) — 6 753 110 / 6753110 — 80 USD
+• Колодки стоянкового гальма (комплект) — 1 000 грн
+
+МОТОР / ТРАНСМІСІЯ
+• Насос ГУР — LUK 6760074042 / ZF 6774445-02 — 120 USD
+• Корпус масляного фільтра BMW 3.0 — 1 437 582 — 1 200 грн
+• Еластична муфта карданного вала (Guibo) — 1 229 754 / 1229754 SGF GAB01-003 — 40 USD
+• Кріплення з сайлентблоком — 18.20 / 6875 168 — 15 USD (уточнити застосування)
+• Захисний щит / теплозахист АКПП — 2 200 грн
+
+ІНШЕ
+• Комплект щіток + омивач + підігрів омивача E65 — 50 USD</div>
+        <div class="listing-actions">
+          <a class="btn btn-primary js-olx" href="#" aria-disabled="true">OLX (скоро)</a>
+          <a class="btn btn-ghost js-ask" href="#contact">Написати про цю</a>
+        </div>
+      </article>
+
+      <article class="listing" id="w140" data-olx="">
+        <div class="listing-top">
+          <h2>Mercedes W140</h2>
+          <span class="price">договірна</span>
+        </div>
+        <p class="listing-title">Куліса АКПП · бардачок · радіатор · салон</p>
+        <div class="body">Запчастини Mercedes S-Class W140 (седан / купе за сумісністю — уточнюйте). Оригінал б/у.
+
+САЛОН / КУЗОВ
+• Повітроводи салону (дефлектори) ×4 — 60 USD
+• Бардачок + механізми (комплект) — 140 830 12 85 — 70 USD
+• Куліса АКПП W140 5.0 — A 140 277 01 98, A 140 267 06 37 — 2 500 грн
+• Поводок / щітка лобового W140 — 500 грн
+
+ОХОЛОДЖЕННЯ
+• Радіатор / охолоджувач Behr — 140 500 00 00 — 2 000 грн
+  (стартер на фото радіатора — підставка, не в комплекті)
+
+ІНШЕ (Mercedes)
+• Короб / лоток запаски — A 447 890 05 07 — 80 USD
+  (артикул V-Class/Vito сімейства — перевіряйте по авто)</div>
+        <div class="listing-actions">
+          <a class="btn btn-primary js-olx" href="#" aria-disabled="true">OLX (скоро)</a>
+          <a class="btn btn-ghost js-ask" href="#contact">Написати про цю</a>
+        </div>
+      </article>
+
+      <article class="listing" id="misc" data-olx="">
+        <div class="listing-top">
+          <h2>Залишки / мікс</h2>
+          <span class="price">договірна</span>
+        </div>
+        <p class="listing-title">Honda coupe · стартер · Skoda · Terracan · VAG</p>
+        <div class="body">Різні б/у запчастини (не з основних лотів Audi/BMW/Mercedes W140). Ціни фікс.
+
+• Двері передні Honda Accord coupe ~2006–2008, чорні (без скла / дзеркала / ручки) — 40 USD
+• Пружини задні (пара) ~Skoda Tour 2005 — 600 грн
+• Шторка / поличка багажника ~Hyundai Terracan — 50 USD
+• Бампер передній темний + комплект ПТФ (1 шт) — ціна договірна
+• Стартер Magneti Marelli — 63293537, M70R 1.4 kW — 2 500 грн
+• Троси капот + ручник VAG — 7L0 712 306 D — 50 USD
+• Поводки / щітки лобового Audi A4 — 500 грн</div>
+        <div class="listing-actions">
+          <a class="btn btn-primary js-olx" href="#" aria-disabled="true">OLX (скоро)</a>
+          <a class="btn btn-ghost js-ask" href="#contact">Написати про цю</a>
+        </div>
+      </article>
+    </main>
+
+    <p class="note" id="contact">
+      Це не магазин — разовий розпродаж з гаража. Після продажу позицію прибираємо.
+      Фото й торг — у чаті або на OLX. Підставте свої посилання OLX у <code>data-olx</code> після публікації.
+    </p>
+  </div>
+
+  <div class="dock">
+    <div class="dock-inner">
+      <a class="btn btn-primary" id="btn-tg" href="#">Telegram</a>
+      <a class="btn btn-ghost" id="btn-vb" href="#">Viber</a>
+      <a class="btn btn-ghost" id="btn-call" href="#" hidden>Подзвонити</a>
+    </div>
+  </div>
+
+  <script>
+    /**
+     * Заповніть перед шарингом у чати.
+     * telegram: "username" без @  АБО повний t.me лінк
+     * viber: номер як 380XXXXXXXXX
+     * phone: опційно
+     */
+    const CONTACT = {
+      telegram: "",   // напр. "myuser" або "https://t.me/myuser"
+      viber: "",      // напр. "380991234567"
+      phone: "",      // напр. "+380991234567"
+    };
+
+    /** Після публікації на OLX — вставте URL у data-olx кожного article, або сюди: */
+    const OLX_LINKS = {
+      turbo: "",
+      reyka: "",
+      allroad: "",
+      e65: "",
+      w140: "",
+      misc: "",
+    };
+
+    function tgHref(u) {
+      if (!u) return null;
+      if (u.startsWith("http")) return u;
+      return "https://t.me/" + u.replace(/^@/, "");
+    }
+    function viberHref(n) {
+      if (!n) return null;
+      const digits = n.replace(/\D/g, "");
+      return "viber://chat?number=%2B" + digits;
+    }
+
+    const tg = document.getElementById("btn-tg");
+    const vb = document.getElementById("btn-vb");
+    const call = document.getElementById("btn-call");
+
+    const tHref = tgHref(CONTACT.telegram);
+    if (tHref) { tg.href = tHref; } else { tg.setAttribute("aria-disabled", "true"); tg.textContent = "Telegram (вставте)"; }
+
+    const vHref = viberHref(CONTACT.viber);
+    if (vHref) { vb.href = vHref; } else { vb.setAttribute("aria-disabled", "true"); vb.textContent = "Viber (вставте)"; }
+
+    if (CONTACT.phone) {
+      call.hidden = false;
+      call.href = "tel:" + CONTACT.phone.replace(/\s/g, "");
+    }
+
+    document.querySelectorAll(".listing").forEach((el) => {
+      const id = el.id;
+      const fromMap = OLX_LINKS[id];
+      const fromAttr = el.getAttribute("data-olx");
+      const url = (fromMap && fromMap.trim()) || (fromAttr && fromAttr.trim()) || "";
+      const btn = el.querySelector(".js-olx");
+      if (url) {
+        btn.href = url;
+        btn.removeAttribute("aria-disabled");
+        btn.textContent = "Відкрити на OLX";
+        btn.target = "_blank";
+        btn.rel = "noopener noreferrer";
+      }
+      const ask = el.querySelector(".js-ask");
+      ask.addEventListener("click", (e) => {
+        const title = el.querySelector("h2")?.textContent?.trim() || id;
+        if (tHref) {
+          e.preventDefault();
+          const msg = encodeURIComponent("Привіт! Цікавить: " + title + " (з картки розпродажу)");
+          window.location.href = tHref.includes("?") ? tHref : tHref + "?text=" + msg;
+        }
+      });
+    });
+
+    /* Active TOC highlight */
+    const tocLinks = [...document.querySelectorAll(".toc a")];
+    const sections = tocLinks.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          const id = "#" + en.target.id;
+          tocLinks.forEach((a) => a.classList.toggle("is-active", a.getAttribute("href") === id));
+        });
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
+    );
+    sections.forEach((s) => io.observe(s));
+  </script>
+</body>
+</html>
