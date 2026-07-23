@@ -39,7 +39,7 @@
         radial-gradient(90% 60% at 100% 0%, #1a2228 0%, transparent 50%),
         var(--bg);
       min-height: 100dvh;
-      padding-bottom: 5.5rem;
+      padding-bottom: 7.5rem;
     }
 
     a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
@@ -254,8 +254,8 @@
     }
     .dock .btn { width: 100%; }
 
-    @media (min-width: 480px) {
-      .dock-inner { grid-template-columns: 1fr 1fr 1fr; }
+    @media (min-width: 520px) {
+      .dock-inner { grid-template-columns: repeat(4, 1fr); }
     }
   </style>
 </head>
@@ -459,22 +459,26 @@ OEM / номери з бирки:
   <div class="dock">
     <div class="dock-inner">
       <a class="btn btn-primary" id="btn-tg" href="#">Telegram</a>
+      <a class="btn btn-ghost" id="btn-wa" href="#">WhatsApp</a>
+      <a class="btn btn-ghost" id="btn-sg" href="#">Signal</a>
       <a class="btn btn-ghost" id="btn-vb" href="#">Viber</a>
-      <a class="btn btn-ghost" id="btn-call" href="#" hidden>Подзвонити</a>
     </div>
   </div>
 
   <script>
     /**
      * Заповніть перед шарингом у чати.
-     * telegram: "username" без @  АБО повний t.me лінк
-     * viber: номер як 380XXXXXXXXX
-     * phone: опційно
+     * Номери лише в посиланнях (не показуються на сторінці). Телефон / tel: — немає.
+     * telegram: "username" без @ АБО https://t.me/...
+     * whatsapp: "380XXXXXXXXX" АБО https://wa.me/380...
+     * signal:   "380XXXXXXXXX" АБО https://signal.me/#p/+380... АБО username-лінк
+     * viber:    "380XXXXXXXXX" АБО повний viber:// / https:// лінк
      */
     const CONTACT = {
-      telegram: "",   // напр. "myuser" або "https://t.me/myuser"
-      viber: "",      // напр. "380991234567"
-      phone: "",      // напр. "+380991234567"
+      telegram: "",
+      whatsapp: "",
+      signal: "",
+      viber: "",
     };
 
     /** Після публікації на OLX — вставте URL у data-olx кожного article, або сюди: */
@@ -487,31 +491,57 @@ OEM / номери з бирки:
       misc: "",
     };
 
+    function digitsOnly(s) {
+      return (s || "").replace(/\D/g, "");
+    }
     function tgHref(u) {
       if (!u) return null;
-      if (u.startsWith("http")) return u;
+      if (/^https?:\/\//i.test(u) || u.startsWith("tg://")) return u;
       return "https://t.me/" + u.replace(/^@/, "");
     }
-    function viberHref(n) {
-      if (!n) return null;
-      const digits = n.replace(/\D/g, "");
-      return "viber://chat?number=%2B" + digits;
+    function waHref(u) {
+      if (!u) return null;
+      if (/^https?:\/\//i.test(u)) return u;
+      const d = digitsOnly(u);
+      return d ? "https://wa.me/" + d : null;
+    }
+    function signalHref(u) {
+      if (!u) return null;
+      if (/^https?:\/\//i.test(u) || u.startsWith("sgnl://")) return u;
+      const d = digitsOnly(u);
+      return d ? "https://signal.me/#p/+" + d : null;
+    }
+    function viberHref(u) {
+      if (!u) return null;
+      if (/^https?:\/\//i.test(u) || u.startsWith("viber://")) return u;
+      const d = digitsOnly(u);
+      return d ? "viber://chat?number=%2B" + d : null;
+    }
+    function wireBtn(el, href, label) {
+      if (href) {
+        el.href = href;
+        el.removeAttribute("aria-disabled");
+        if (/^https?:\/\//i.test(href)) {
+          el.target = "_blank";
+          el.rel = "noopener noreferrer";
+        }
+      } else {
+        el.href = "#";
+        el.setAttribute("aria-disabled", "true");
+        el.textContent = label + " (вставте)";
+      }
     }
 
     const tg = document.getElementById("btn-tg");
+    const wa = document.getElementById("btn-wa");
+    const sg = document.getElementById("btn-sg");
     const vb = document.getElementById("btn-vb");
-    const call = document.getElementById("btn-call");
 
     const tHref = tgHref(CONTACT.telegram);
-    if (tHref) { tg.href = tHref; } else { tg.setAttribute("aria-disabled", "true"); tg.textContent = "Telegram (вставте)"; }
-
-    const vHref = viberHref(CONTACT.viber);
-    if (vHref) { vb.href = vHref; } else { vb.setAttribute("aria-disabled", "true"); vb.textContent = "Viber (вставте)"; }
-
-    if (CONTACT.phone) {
-      call.hidden = false;
-      call.href = "tel:" + CONTACT.phone.replace(/\s/g, "");
-    }
+    wireBtn(tg, tHref, "Telegram");
+    wireBtn(wa, waHref(CONTACT.whatsapp), "WhatsApp");
+    wireBtn(sg, signalHref(CONTACT.signal), "Signal");
+    wireBtn(vb, viberHref(CONTACT.viber), "Viber");
 
     document.querySelectorAll(".listing").forEach((el) => {
       const id = el.id;
