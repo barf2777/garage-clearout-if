@@ -106,7 +106,7 @@
       top: 0;
       z-index: 20;
       margin: 0 calc(-1 * var(--pad)) 1.5rem;
-      padding: 0.65rem var(--pad);
+      padding: 0.7rem var(--pad) 0.65rem;
       background: rgba(18, 20, 22, 0.88);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--line);
@@ -116,6 +116,8 @@
       display: flex;
       gap: 0.4rem;
       overflow-x: auto;
+      overflow-y: hidden;
+      padding-block: 3px; /* room for pill top/bottom borders (overflow clips otherwise) */
       scrollbar-width: none;
       -webkit-overflow-scrolling: touch;
     }
@@ -262,6 +264,7 @@
 
     /* VIN checker */
     .vin-box {
+      scroll-margin-top: 4rem;
       margin: 0 0 1.25rem;
       padding: 1.1rem 1.15rem 1.2rem;
       border: 1px solid var(--line);
