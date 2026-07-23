@@ -21,15 +21,15 @@
     ],
     "disclaimer": "Rules helper only — not ETK/EPC proof. Confirm OEM via catalog links.",
     "donors": {
-      "bmw:e65": "один донор E65 (~2001–2004); колір косметика — важливий фізичний fit",
+      "bmw:e65": "один донор E65 (~2001–2004); колір косметика — важлива фізична сумісність",
       "bmw:e66": "те саме сімейство E65, де позначено; LWB може відрізнятися на кузові",
       "audi:c5-allroad": "один донор Allroad C5 2.5 TDI; колір косметика",
-      "audi:a4": "лот щіток A4 — фізичний fit A4 B6/B7",
+      "audi:a4": "лот щіток A4 — фізична сумісність з A4 B6/B7",
       "mb:w140": "один донор W140; колір салону косметика",
       "mb:om642": "окремий донор GL 320 CDI (не W140)",
       "mb:vito-v-class": "лоток запаски — сімейство Vito/V-Class",
       "skoda:tour": "задні пружини Skoda Octavia Tour ~2005 — fit за кодом/смугами",
-      "hyundai:terracan": "шторка Terracan — фізичний fit; колір косметика"
+      "hyundai:terracan": "шторка Terracan — фізична сумісність; колір косметика"
     },
     "oem_status": {
       "confirmed": "Read from part / seller-confirmed identity",
@@ -94,7 +94,7 @@
         "audi:c5-allroad"
       ],
       "confidence_default": "medium",
-      "notes": "Рамки дверей Allroad C5 L/R + скло/підйомники; фізичний fit того ж шасі",
+      "notes": "Рамки дверей Allroad C5 L/R + скло/підйомники; фізична сумісність з тим самим шасі",
       "oem_status": "catalog",
       "price": "1 500 грн/шт"
     },
@@ -462,7 +462,7 @@
         "mb:w140"
       ],
       "confidence_default": "medium",
-      "notes": "Дефлектори панелі W140 ×4 (L/R/центр); колір косметика — фізичний fit W140",
+      "notes": "Дефлектори панелі W140 ×4 (L/R/центр); колір косметика — фізична сумісність з W140",
       "oem_status": "catalog",
       "price": "60 USD"
     },
@@ -526,7 +526,7 @@
         "audi:a4"
       ],
       "confidence_default": "medium",
-      "notes": "Поводки щіток Audi A4 B6/B7 (типові); фізичний fit A4 — звірити покоління по фото",
+      "notes": "Поводки щіток Audi A4 B6/B7 (типові); фізична сумісність з A4 — звірити покоління по фото",
       "oem_status": "catalog",
       "price": "500 грн"
     },
@@ -608,7 +608,7 @@
         "hyundai:terracan"
       ],
       "confidence_default": "low",
-      "notes": "Шторка багажника Terracan — сімейство 85540-H10**; фізичний fit Terracan; колір косметика",
+      "notes": "Шторка багажника Terracan — сімейство 85540-H10**; фізична сумісність з Terracan; колір косметика",
       "oem_status": "catalog",
       "price": "50 USD"
     },
