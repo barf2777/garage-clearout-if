@@ -793,6 +793,7 @@
         return;
       }
       const p = result.profile;
+      const certaintyUa = { low: "низька", medium: "середня", high: "висока" };
       let meta =
         "VIN: <strong>" +
         result.vin +
@@ -800,8 +801,8 @@
         (p.year || "—") +
         " · " +
         p.make +
-        " · " +
-        p.certainty;
+        " · впевненість: " +
+        (certaintyUa[p.certainty] || p.certainty);
       if (!result.check_digit_ok) {
         meta += ' · <span class="warn">контрольна цифра невірна — перевірте набір</span>';
       }
@@ -817,7 +818,7 @@
         if (!list.length) {
           const e = document.createElement("p");
           e.className = "vin-empty";
-          e.textContent = "Немає";
+          e.textContent = "Немає збігів";
           vinResults.appendChild(e);
           return;
         }

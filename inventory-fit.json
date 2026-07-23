@@ -21,15 +21,15 @@
     ],
     "disclaimer": "Rules helper only — not ETK/EPC proof. Confirm OEM via catalog links.",
     "donors": {
-      "bmw:e65": "single E65 donor (~2001–2004 pre-LCI stock); color cosmetic — physical fit for E65",
-      "bmw:e66": "same E65 donor family where tagged; LWB may differ on some body parts",
-      "audi:c5-allroad": "single Allroad C5 2.5 TDI donor; color cosmetic — physical fit",
-      "audi:a4": "A4 wiper lot — physical fit A4 B6/B7 arms; color N/A",
-      "mb:w140": "single W140 donor; interior color cosmetic — physical fit W140",
-      "mb:om642": "separate GL 320 CDI donor (not W140)",
-      "mb:vito-v-class": "spare tray — Vito/V-Class family article",
-      "skoda:tour": "Skoda Octavia Tour ~2005 rear springs — physical fit by spring code/stripes",
-      "hyundai:terracan": "Terracan cargo cover — physical fit Terracan cargo area; color cosmetic"
+      "bmw:e65": "один донор E65 (~2001–2004); колір косметика — важливий фізичний fit",
+      "bmw:e66": "те саме сімейство E65, де позначено; LWB може відрізнятися на кузові",
+      "audi:c5-allroad": "один донор Allroad C5 2.5 TDI; колір косметика",
+      "audi:a4": "лот щіток A4 — фізичний fit A4 B6/B7",
+      "mb:w140": "один донор W140; колір салону косметика",
+      "mb:om642": "окремий донор GL 320 CDI (не W140)",
+      "mb:vito-v-class": "лоток запаски — сімейство Vito/V-Class",
+      "skoda:tour": "задні пружини Skoda Octavia Tour ~2005 — fit за кодом/смугами",
+      "hyundai:terracan": "шторка Terracan — фізичний fit; колір косметика"
     },
     "oem_status": {
       "confirmed": "Read from part / seller-confirmed identity",
@@ -49,7 +49,7 @@
         "honda:accord-coupe-8"
       ],
       "confidence_default": "high",
-      "notes": "Accord coupe ~2008–2012; colour NH731P",
+      "notes": "Двері Accord coupe ~2008–2012; колір NH731P",
       "oem_status": "confirmed",
       "price": "40 USD"
     },
@@ -64,7 +64,7 @@
         "audi:c5-allroad"
       ],
       "confidence_default": "medium",
-      "notes": "Allroad C5 2.5 TDI donor doors (R front+rear); OEM from legacy extract — verify stamp; color cosmetic",
+      "notes": "Двері Allroad C5 2.5 TDI (праві пер.+зад.); OEM з архіву чату — звірити штамп; колір лише косметика",
       "oem_status": "catalog",
       "price": "50 USD"
     },
@@ -79,7 +79,7 @@
         "audi:c5-allroad"
       ],
       "confidence_default": "medium",
-      "notes": "Allroad C5 2.5 TDI trunk lid + rear bumper; inv 72/324/724; OEM from legacy extract; color cosmetic",
+      "notes": "Кришка + задній бампер Allroad C5 2.5 TDI; інв. 72/324/724; OEM з архіву — колір косметика",
       "oem_status": "catalog",
       "price": "5 000 грн"
     },
@@ -94,7 +94,7 @@
         "audi:c5-allroad"
       ],
       "confidence_default": "medium",
-      "notes": "Allroad C5 door frames L/R + glass/regulators; legacy extract; physical fit same chassis",
+      "notes": "Рамки дверей Allroad C5 L/R + скло/підйомники; фізичний fit того ж шасі",
       "oem_status": "catalog",
       "price": "1 500 грн/шт"
     },
@@ -113,7 +113,7 @@
         "audi:c5-a6-quattro"
       ],
       "confidence_default": "medium",
-      "notes": "Bosch / Audi — confirm OEM per VIN; same Allroad C5 2.5 TDI donor",
+      "notes": "Bosch / Audi — підтвердити OEM по VIN; той самий донор Allroad C5 2.5 TDI",
       "oem_status": "confirmed",
       "price": "15 USD/шт"
     },
@@ -130,7 +130,7 @@
         "audi:c5-a6-quattro"
       ],
       "confidence_default": "medium",
-      "notes": "Allroad C5 quattro rear diff family — read code on housing (01R525053* / gearbox code); same Allroad C5 2.5 TDI donor",
+      "notes": "Задній редуктор Allroad C5 quattro — сімейство 01R525053*; зчитати код на корпусі",
       "oem_status": "catalog",
       "price": "2 000 грн"
     },
@@ -145,7 +145,7 @@
         "audi:c5-a6-quattro"
       ],
       "confidence_default": "medium",
-      "notes": "C5 family washer reservoir; same Allroad C5 2.5 TDI donor",
+      "notes": "Бачок омивача сімейства C5; донор Allroad C5 2.5 TDI",
       "oem_status": "confirmed",
       "price": "500 грн"
     },
@@ -164,7 +164,7 @@
         "vag:1.8t-coils"
       ],
       "confidence_default": "medium",
-      "notes": "VW AG / Audi / Skoda 1.8T family — match exact OEM",
+      "notes": "Котушки VW/Audi/Skoda 1.8T — звірити точний OEM",
       "oem_status": "confirmed",
       "price": "550 грн/шт"
     },
@@ -179,7 +179,7 @@
         "audi:c5-a6-quattro"
       ],
       "confidence_default": "medium",
-      "notes": "Bosch — confirm engine; same Allroad C5 2.5 TDI donor",
+      "notes": "Bosch — підтвердити двигун; донор Allroad C5 2.5 TDI",
       "oem_status": "confirmed",
       "price": "1 200 грн"
     },
@@ -194,7 +194,7 @@
         "audi:c5-a6-quattro"
       ],
       "confidence_default": "high",
-      "notes": "ZF / Allroad C5; same Allroad C5 2.5 TDI donor",
+      "notes": "ZF / Allroad C5; донор Allroad C5 2.5 TDI",
       "oem_status": "confirmed",
       "price": "5 000 грн"
     },
@@ -212,7 +212,7 @@
         "audi:c5-a6-quattro"
       ],
       "confidence_default": "medium",
-      "notes": "Allroad C5 knuckles from legacy extract (rear L/R + front) — verify which sides we have on photos",
+      "notes": "Цапфи Allroad C5 (зад. L/R + передні) з архіву — звірити сторони по фото",
       "oem_status": "catalog",
       "price": "20 USD/шт"
     },
@@ -228,7 +228,7 @@
         "audi:c5-a6-quattro"
       ],
       "confidence_default": "medium",
-      "notes": "Allroad C5 rear driveshafts; legacy extract; same 2.5 TDI donor",
+      "notes": "Задні приводи Allroad C5; донор 2.5 TDI",
       "oem_status": "catalog",
       "price": "1 000 грн/компл."
     },
@@ -243,7 +243,7 @@
         "audi:c5-a6-quattro"
       ],
       "confidence_default": "medium",
-      "notes": "Front brake discs (new) — legacy extract 4B3615601A; confirm size vs Allroad",
+      "notes": "Передні диски (нові) — каталог 4B3615601A; звірити розмір під Allroad",
       "oem_status": "catalog",
       "price": "2 500 грн/компл."
     },
@@ -260,7 +260,7 @@
         "audi:c5-a6-quattro"
       ],
       "confidence_default": "medium",
-      "notes": "Typical A6/Allroad C5 2.5 TDI airbox; also legacy 4Z0129607 — confirm on shell; same donor",
+      "notes": "Корпус фільтра A6/Allroad C5 2.5 TDI; також 4Z0129607 — звірити на корпусі",
       "oem_status": "catalog",
       "price": "800 грн"
     },
@@ -277,7 +277,7 @@
         "bmw:e66"
       ],
       "confidence_default": "high",
-      "notes": "Rear active stabilizer; same E65 donor as other BMW parts",
+      "notes": "Задній активний стабілізатор Dynamic Drive; той самий донор E65",
       "oem_status": "confirmed",
       "price": "2 000 грн/компл."
     },
@@ -295,7 +295,7 @@
         "bmw:e66"
       ],
       "confidence_default": "medium",
-      "notes": "E65: rear left carrier 33326763119 (+supersession 33326775079); front right 31216753462 — confirm stamps; same E65 donor; color cosmetic",
+      "notes": "E65: задній лівий кулак 33326763119 (заміна 33326775079); передній правий 31216753462 — звірити штампи; донор E65; колір косметика",
       "oem_status": "catalog",
       "price": "20 USD/шт"
     },
@@ -311,7 +311,7 @@
         "bmw:e66"
       ],
       "confidence_default": "high",
-      "notes": "E65 parking brake shoe repair kit (common ETK); same E65 donor; color cosmetic",
+      "notes": "Комплект колодок стоянкового гальма E65 (типовий ETK); донор E65",
       "oem_status": "catalog",
       "price": "1 000 грн"
     },
@@ -327,7 +327,7 @@
         "bmw:e66"
       ],
       "confidence_default": "high",
-      "notes": "Confirm ETK for VIN; same E65 donor; color cosmetic",
+      "notes": "Підтвердити по ETK для VIN; донор E65",
       "oem_status": "confirmed",
       "price": "80 USD"
     },
@@ -343,7 +343,7 @@
         "bmw:e66"
       ],
       "confidence_default": "medium",
-      "notes": "BMW 3.0 E65 — confirm engine; same E65 donor; color cosmetic",
+      "notes": "BMW 3.0 E65 — підтвердити двигун; донор E65",
       "oem_status": "confirmed",
       "price": "1 200 грн"
     },
@@ -360,7 +360,7 @@
         "bmw:e66"
       ],
       "confidence_default": "high",
-      "notes": "SGF Guibo — also used on other BMWs; confirm RealOEM; same E65 donor; color cosmetic",
+      "notes": "Муфта SGF Guibo — буває й на інших BMW; звірити RealOEM; донор E65",
       "oem_status": "confirmed",
       "price": "40 USD"
     },
@@ -377,7 +377,7 @@
         "bmw:e65"
       ],
       "confidence_default": "medium",
-      "notes": "E65 pre-LCI ~2001–2004 fenders L/R; LCI uses 41357138473/474 — we stock pre-LCI style; same E65 donor; color cosmetic",
+      "notes": "Крила E65 дорестайл ~2001–2004 L/R; LCI — 41357138473/474; у нас дорестайл; донор E65",
       "oem_status": "catalog",
       "price": "75 USD/шт"
     },
@@ -393,7 +393,7 @@
         "bmw:e66"
       ],
       "confidence_default": "low",
-      "notes": "E65 underfloor gearbox coating/shield candidate 51757146629 — confirm vs photo A91–92; same E65 donor",
+      "notes": "Ймовірний щит/покриття під АКПП E65 51757146629 — звірити з фото A91–92; донор E65",
       "oem_status": "catalog",
       "price": "2 200 грн"
     },
@@ -413,7 +413,7 @@
         "mb:ml-w164"
       ],
       "confidence_default": "high",
-      "notes": "GL 320 CDI on tag; OM642 family — confirm chassis",
+      "notes": "На бирці GL 320 CDI; сімейство OM642 — підтвердити шасі",
       "oem_status": "confirmed",
       "price": "12 300 грн"
     },
@@ -429,7 +429,7 @@
         "bmw:e66"
       ],
       "confidence_default": "high",
-      "notes": "LUK / ZF; same E65 donor; color cosmetic",
+      "notes": "LUK / ZF; донор E65",
       "oem_status": "confirmed",
       "price": "120 USD"
     },
@@ -444,7 +444,7 @@
         "mb:vito-v-class"
       ],
       "confidence_default": "medium",
-      "notes": "Vito / V-Class family article",
+      "notes": "Артикул сімейства Vito / V-Class",
       "oem_status": "confirmed",
       "price": "80 USD"
     },
@@ -462,7 +462,7 @@
         "mb:w140"
       ],
       "confidence_default": "medium",
-      "notes": "W140 dash vents ×4; L/R/center family; color cosmetic — physical fit W140",
+      "notes": "Дефлектори панелі W140 ×4 (L/R/центр); колір косметика — фізичний fit W140",
       "oem_status": "catalog",
       "price": "60 USD"
     },
@@ -477,7 +477,7 @@
         "mb:w140"
       ],
       "confidence_default": "high",
-      "notes": "W140 glovebox; same W140 donor; color cosmetic",
+      "notes": "Бардачок W140; донор W140; колір косметика",
       "oem_status": "confirmed",
       "price": "70 USD"
     },
@@ -494,7 +494,7 @@
         "mb:w140"
       ],
       "confidence_default": "high",
-      "notes": "W140 5.0 — confirm transmission; same W140 donor; color cosmetic",
+      "notes": "Куліса W140 5.0 — підтвердити АКПП; донор W140",
       "oem_status": "confirmed",
       "price": "2 500 грн"
     },
@@ -509,7 +509,7 @@
         "mb:w140"
       ],
       "confidence_default": "high",
-      "notes": "Behr W140; same W140 donor; color cosmetic",
+      "notes": "Радіатор Behr W140; донор W140",
       "oem_status": "confirmed",
       "price": "2 000 грн"
     },
@@ -526,7 +526,7 @@
         "audi:a4"
       ],
       "confidence_default": "medium",
-      "notes": "Audi A4 B6/B7 front wiper arms pair (common); physical fit A4 — confirm gen on photos",
+      "notes": "Поводки щіток Audi A4 B6/B7 (типові); фізичний fit A4 — звірити покоління по фото",
       "oem_status": "catalog",
       "price": "500 грн"
     },
@@ -543,7 +543,7 @@
         "mb:w140"
       ],
       "confidence_default": "medium",
-      "notes": "W140 wiper arm L/R family; same W140 donor; physical fit",
+      "notes": "Поводок щітки W140 L/R; донор W140",
       "oem_status": "catalog",
       "price": "500 грн"
     },
@@ -561,7 +561,7 @@
         "bmw:e66"
       ],
       "confidence_default": "medium",
-      "notes": "E65 wet-arm heated wiper L/R (+ washer in arm); kit may include more — same E65 donor",
+      "notes": "E65 важелі щіток з підігрівом омивача (wet-arm) L/R; у комплекті може бути більше — донор E65",
       "oem_status": "catalog",
       "price": "50 USD"
     },
@@ -576,7 +576,7 @@
         "skoda:tour"
       ],
       "confidence_default": "low",
-      "notes": "Octavia Tour rear spring family 1J0511115* — many suffixes/stripe codes; match paint marks on springs",
+      "notes": "Задні пружини Octavia Tour — сімейство 1J0511115*; багато суфіксів; звірити кольорові смуги",
       "oem_status": "catalog",
       "price": "600 грн"
     },
@@ -593,7 +593,7 @@
         "audi:c5-allroad"
       ],
       "confidence_default": "medium",
-      "notes": "A6 C5 hinges; 8E0 also B6 A4 family — confirm; same Allroad C5 2.5 TDI donor",
+      "notes": "Петлі капота A6 C5; 8E0 також сімейство A4 B6 — підтвердити; донор Allroad C5 2.5 TDI",
       "oem_status": "confirmed",
       "price": "600 грн"
     },
@@ -608,7 +608,7 @@
         "hyundai:terracan"
       ],
       "confidence_default": "low",
-      "notes": "Terracan cargo/parcel cover family 85540-H10**; physical fit Terracan; color cosmetic",
+      "notes": "Шторка багажника Terracan — сімейство 85540-H10**; фізичний fit Terracan; колір косметика",
       "oem_status": "catalog",
       "price": "50 USD"
     },
@@ -625,7 +625,7 @@
         "bmw:e65"
       ],
       "confidence_default": "medium",
-      "notes": "E65 ~2001–2004 front bumper panel 51117042706; ПТФ till 03/2005 63178379683/684 (alt from 03/2005 63176943415/416); same E65 donor; color cosmetic",
+      "notes": "Передній бампер E65 ~2001–2004 51117042706; ПТФ до 03/2005 63178379683/684 (після — 63176943415/416); донор E65",
       "oem_status": "catalog",
       "price": "8 200 грн"
     },
@@ -637,7 +637,7 @@
         "audi:c5-allroad"
       ],
       "confidence_default": "high",
-      "notes": "Allroad C5 2.5 TDI fuel tank; inv. 223; same donor; color N/A",
+      "notes": "Бак Allroad C5 2.5 TDI; інв. 223; той самий донор",
       "oem_status": "missing",
       "price": "1 000 грн"
     },
@@ -652,7 +652,7 @@
         "unknown"
       ],
       "confidence_default": "low",
-      "notes": "Magneti Marelli — confirm application by OEM lookup",
+      "notes": "Magneti Marelli — застосування підтвердити по OEM",
       "oem_status": "confirmed",
       "price": "2 500 грн"
     },
@@ -666,7 +666,7 @@
         "unknown"
       ],
       "confidence_default": "low",
-      "notes": "VAG 7L0 — Touareg / related; confirm via 7zap",
+      "notes": "VAG 7L0 — Touareg / суміжні; підтвердити через 7zap",
       "oem_status": "confirmed",
       "price": "50 USD"
     },
@@ -684,7 +684,7 @@
         "bmw:e66"
       ],
       "confidence_default": "high",
-      "notes": "Confirmed E65 centre mount; casting 18.20 / 6875 168; same donor as Guibo; same E65 donor; color cosmetic",
+      "notes": "Підтверджена опора кардана E65; лиття 18.20 / 6875 168; той самий донор, що й Guibo",
       "oem_status": "confirmed",
       "price": "15 USD"
     }

@@ -94,17 +94,17 @@
         tags.add("bmw:e66");
         chassis.push("e65", "e66");
         certainty = "medium";
-        notes.push("BMW 7-series window (E65/E66 heuristics)");
+        notes.push("BMW 7 серія — вікно E65/E66 (евристика по VIN)");
       } else if (year && year >= 2001 && year <= 2008) {
         tags.add("bmw:e65");
         tags.add("bmw:e66");
         chassis.push("e65?", "e66?");
         certainty = "low";
-        notes.push("BMW + year in E65 era — chassis not certain from VIN alone");
+        notes.push("BMW + рік епохи E65 — кузов по VIN непевний");
       } else {
         tags.add("bmw:e65");
         certainty = "low";
-        notes.push("BMW decoded; chassis unclear — E65 listed as soft match only");
+        notes.push("BMW розпізнано; кузов неясний — E65 лише як м’який збіг");
       }
     } else if (["WAU", "TRU", "WA1", "WUA"].includes(wmi) || wmi.startsWith("WA")) {
       make = "audi";
@@ -113,7 +113,7 @@
         tags.add("audi:c5-a6-quattro");
         chassis.push("c5", "allroad?", "a6?");
         certainty = "medium";
-        notes.push("Audi C5-era year — Allroad vs A6 not certain from VIN alone");
+        notes.push("Audi епохи C5 — Allroad чи A6 по VIN не відрізнити");
       }
       if (year && year >= 2000 && year <= 2016) tags.add("audi:a4");
       tags.add("vag:1.8t-coils");
@@ -121,19 +121,19 @@
         tags.add("audi:c5-allroad");
         tags.add("audi:c5-a6-quattro");
         certainty = "low";
-        notes.push("Audi — broad C5 tags; confirm model");
+        notes.push("Audi — широкі теги C5; підтвердіть модель");
       }
     } else if (["WVW", "WV1", "WV2", "WV3", "AAV"].includes(wmi)) {
       make = "vw";
       tags.add("vag:1.8t-coils");
       certainty = "low";
-      notes.push("VW — coil family only unless OEM confirms");
+      notes.push("VW — лише сімейство котушок 1.8T, доки не підтверджено OEM");
     } else if (wmi === "TMB") {
       make = "skoda";
       tags.add("skoda:tour");
       tags.add("vag:1.8t-coils");
       certainty = year && year >= 2000 && year <= 2006 ? "medium" : "low";
-      notes.push("Skoda — Tour springs are weakly ID'd");
+      notes.push("Skoda — пружини Tour ідентифіковані слабко");
     } else if (
       ["WDB", "WDC", "WDD", "WDF", "WDY", "4JG", "4J4"].includes(wmi) ||
       wmi.startsWith("WD")
@@ -143,7 +143,7 @@
         tags.add("mb:w140");
         chassis.push("w140");
         certainty = "medium";
-        notes.push("Mercedes year suggests W140 window");
+        notes.push("Рік Mercedes у вікні W140");
       }
       if (year && year >= 2005 && year <= 2013) {
         tags.add("mb:om642");
@@ -152,18 +152,18 @@
         engine.push("om642?");
         chassis.push("gl-x164?", "ml-w164?");
         if (certainty === "low") certainty = "medium";
-        notes.push("MB mid-2000s — OM642 turbo family possible");
+        notes.push("MB середини 2000-х — можливе сімейство турбіни OM642");
       }
       if (wmi === "WDF" || (year && year >= 2014 && year <= 2026)) {
         tags.add("mb:vito-v-class");
-        notes.push("Vito/V-Class tag soft — confirm A447 part");
+        notes.push("Тег Vito/V-Class м’який — підтвердіть деталь A447");
       }
       if (!tags.size) {
         tags.add("mb:w140");
         tags.add("mb:om642");
         tags.add("mb:vito-v-class");
         certainty = "low";
-        notes.push("Mercedes — could not narrow chassis; all MB families soft");
+        notes.push("Mercedes — шасі не звужено; усі MB-сімейства м’яко");
       }
     } else if (["JHM", "1HG", "2HG", "SHH", "SHS"].includes(wmi) || wmi.startsWith("JH")) {
       make = "honda";
@@ -171,18 +171,18 @@
       if (year && year >= 2008 && year <= 2012) {
         chassis.push("accord-coupe-8");
         certainty = "medium";
-        notes.push("Honda Accord 8th-gen window — coupe not guaranteed");
+        notes.push("Honda Accord 8 покоління — купе не гарантоване");
       } else {
         certainty = "low";
-        notes.push("Honda — Accord coupe doors only if body matches");
+        notes.push("Honda — двері Accord coupe лише якщо кузов збігається");
       }
     } else if (["KMH", "KMF", "5NP", "5NM"].includes(wmi) || wmi.startsWith("KM")) {
       make = "hyundai";
       tags.add("hyundai:terracan");
       certainty = "low";
-      notes.push("Hyundai — Terracan shelf weakly ID'd");
+      notes.push("Hyundai — шторка Terracan ідентифікована слабко");
     } else {
-      notes.push("Unknown WMI " + wmi + " — no brand tags");
+      notes.push("Невідомий WMI " + wmi + " — немає тегів марки");
     }
 
     return {
