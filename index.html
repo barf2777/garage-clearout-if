@@ -53,12 +53,30 @@
 
     /* Hero — one composition */
     .hero {
+      position: relative;
       padding: 2.25rem 0 1.25rem;
       animation: rise 0.7s ease both;
     }
     @keyframes rise {
       from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: none; }
+    }
+    .updated {
+      position: absolute;
+      top: 0.35rem;
+      right: 0;
+      margin: 0;
+      font-size: 0.7rem;
+      line-height: 1.35;
+      color: var(--muted);
+      text-align: right;
+      max-width: 9.5rem;
+    }
+    .updated time {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
     }
     .hero-kicker {
       font-size: 0.75rem;
@@ -67,6 +85,7 @@
       color: var(--accent);
       font-weight: 600;
       margin: 0 0 0.6rem;
+      padding-right: 6.5rem;
     }
     .hero h1 {
       font-family: var(--font-display);
@@ -87,12 +106,6 @@
       gap: 0.5rem;
       margin-top: 1.25rem;
     }
-    .updated {
-      margin: 0.85rem 0 0;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-    .updated time { color: var(--text); font-weight: 500; }
     .chip {
       display: inline-flex;
       align-items: center;
@@ -401,6 +414,7 @@
 <body>
   <div class="wrap">
     <header class="hero">
+      <p class="updated">Оновлено <time id="last-updated" datetime=""></time></p>
       <p class="hero-kicker">Івано-Франківськ</p>
       <h1>Розпродаж<br />з гаража</h1>
       <p>
@@ -412,7 +426,6 @@
         <span class="chip">Нова Пошта · можна глянути</span>
         <span class="chip">від приватної особи</span>
       </div>
-      <p class="updated">Оновлено: <time id="last-updated" datetime=""></time></p>
     </header>
 
     <nav class="toc" aria-label="Оголошення">
@@ -718,8 +731,8 @@
       if (Number.isNaN(d.getTime())) return;
       el.dateTime = d.toISOString();
       el.textContent = d.toLocaleString("uk-UA", {
-        day: "numeric",
-        month: "long",
+        day: "2-digit",
+        month: "2-digit",
         year: "numeric",
         hour: "2-digit",
         minute: "2-digit",
