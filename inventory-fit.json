@@ -1,0 +1,692 @@
+{
+  "_meta": {
+    "updated": "2026-07-24",
+    "purpose": "Seller VIN fit helper — tags for tools/vin-fit.py",
+    "tags": [
+      "audi:c5-allroad",
+      "audi:c5-a6-quattro",
+      "audi:a4",
+      "vag:1.8t-coils",
+      "bmw:e65",
+      "bmw:e66",
+      "mb:w140",
+      "mb:om642",
+      "mb:gl-x164",
+      "mb:ml-w164",
+      "mb:vito-v-class",
+      "honda:accord-coupe-8",
+      "skoda:tour",
+      "hyundai:terracan",
+      "unknown"
+    ],
+    "disclaimer": "Rules helper only — not ETK/EPC proof. Confirm OEM via catalog links.",
+    "donors": {
+      "bmw:e65": "single E65 donor (~2001–2004 pre-LCI stock); color cosmetic — physical fit for E65",
+      "bmw:e66": "same E65 donor family where tagged; LWB may differ on some body parts",
+      "audi:c5-allroad": "single Allroad C5 2.5 TDI donor; color cosmetic — physical fit",
+      "audi:a4": "A4 wiper lot — physical fit A4 B6/B7 arms; color N/A",
+      "mb:w140": "single W140 donor; interior color cosmetic — physical fit W140",
+      "mb:om642": "separate GL 320 CDI donor (not W140)",
+      "mb:vito-v-class": "spare tray — Vito/V-Class family article",
+      "skoda:tour": "Skoda Octavia Tour ~2005 rear springs — physical fit by spring code/stripes",
+      "hyundai:terracan": "Terracan cargo cover — physical fit Terracan cargo area; color cosmetic"
+    },
+    "oem_status": {
+      "confirmed": "Read from part / seller-confirmed identity",
+      "catalog": "Typical ETK/EPC for that chassis — not verified on our stamp",
+      "missing": "Need photo of stamp or still ambiguous"
+    }
+  },
+  "parts": [
+    {
+      "id": 1,
+      "name": "Двері передні (без скла / дзеркала / ручки)",
+      "oem": [
+        "67050-TA0-A90ZZ",
+        "NH731P"
+      ],
+      "fit": [
+        "honda:accord-coupe-8"
+      ],
+      "confidence_default": "high",
+      "notes": "Accord coupe ~2008–2012; colour NH731P",
+      "oem_status": "confirmed",
+      "price": "40 USD"
+    },
+    {
+      "id": 2,
+      "name": "Двері праві передні + задні (з ручками)",
+      "oem": [
+        "4F0831052F",
+        "4Z7833052"
+      ],
+      "fit": [
+        "audi:c5-allroad"
+      ],
+      "confidence_default": "medium",
+      "notes": "Allroad C5 2.5 TDI donor doors (R front+rear); OEM from legacy extract — verify stamp; color cosmetic",
+      "oem_status": "catalog",
+      "price": "50 USD"
+    },
+    {
+      "id": 3,
+      "name": "Кришка багажника + задній бампер",
+      "oem": [
+        "4Z9827023",
+        "4Z7807303"
+      ],
+      "fit": [
+        "audi:c5-allroad"
+      ],
+      "confidence_default": "medium",
+      "notes": "Allroad C5 2.5 TDI trunk lid + rear bumper; inv 72/324/724; OEM from legacy extract; color cosmetic",
+      "oem_status": "catalog",
+      "price": "5 000 грн"
+    },
+    {
+      "id": 4,
+      "name": "Рамки дверей + скло + підйомники",
+      "oem": [
+        "4Z7837011",
+        "4Z7837012"
+      ],
+      "fit": [
+        "audi:c5-allroad"
+      ],
+      "confidence_default": "medium",
+      "notes": "Allroad C5 door frames L/R + glass/regulators; legacy extract; physical fit same chassis",
+      "oem_status": "catalog",
+      "price": "1 500 грн/шт"
+    },
+    {
+      "id": 5,
+      "name": "Датчики ABS (кілька)",
+      "oem": [
+        "0265006780",
+        "0265006782",
+        "0265006788",
+        "0265006712",
+        "4Z7927807G"
+      ],
+      "fit": [
+        "audi:c5-allroad",
+        "audi:c5-a6-quattro"
+      ],
+      "confidence_default": "medium",
+      "notes": "Bosch / Audi — confirm OEM per VIN; same Allroad C5 2.5 TDI donor",
+      "oem_status": "confirmed",
+      "price": "15 USD/шт"
+    },
+    {
+      "id": 6,
+      "name": "Задній редуктор",
+      "oem": [
+        "01R525053",
+        "01R 525 053",
+        "01R500043R"
+      ],
+      "fit": [
+        "audi:c5-allroad",
+        "audi:c5-a6-quattro"
+      ],
+      "confidence_default": "medium",
+      "notes": "Allroad C5 quattro rear diff family — read code on housing (01R525053* / gearbox code); same Allroad C5 2.5 TDI donor",
+      "oem_status": "catalog",
+      "price": "2 000 грн"
+    },
+    {
+      "id": 7,
+      "name": "Бачок омивача 4.4 L",
+      "oem": [
+        "4A0955453C"
+      ],
+      "fit": [
+        "audi:c5-allroad",
+        "audi:c5-a6-quattro"
+      ],
+      "confidence_default": "medium",
+      "notes": "C5 family washer reservoir; same Allroad C5 2.5 TDI donor",
+      "oem_status": "confirmed",
+      "price": "500 грн"
+    },
+    {
+      "id": 8,
+      "name": "Котушки запалювання (~10 шт)",
+      "oem": [
+        "06A905115",
+        "06B905115",
+        "06F905115",
+        "06H905115",
+        "06L905115",
+        "036905115"
+      ],
+      "fit": [
+        "vag:1.8t-coils"
+      ],
+      "confidence_default": "medium",
+      "notes": "VW AG / Audi / Skoda 1.8T family — match exact OEM",
+      "oem_status": "confirmed",
+      "price": "550 грн/шт"
+    },
+    {
+      "id": 9,
+      "name": "Форсунки + паливна рампа",
+      "oem": [
+        "0280150464"
+      ],
+      "fit": [
+        "audi:c5-allroad",
+        "audi:c5-a6-quattro"
+      ],
+      "confidence_default": "medium",
+      "notes": "Bosch — confirm engine; same Allroad C5 2.5 TDI donor",
+      "oem_status": "confirmed",
+      "price": "1 200 грн"
+    },
+    {
+      "id": 10,
+      "name": "Рульова рейка",
+      "oem": [
+        "4B1422066D"
+      ],
+      "fit": [
+        "audi:c5-allroad",
+        "audi:c5-a6-quattro"
+      ],
+      "confidence_default": "high",
+      "notes": "ZF / Allroad C5; same Allroad C5 2.5 TDI donor",
+      "oem_status": "confirmed",
+      "price": "5 000 грн"
+    },
+    {
+      "id": 11,
+      "name": "Цапфи",
+      "oem": [
+        "4Z7505435B",
+        "8E0505435J",
+        "4Z7407254H",
+        "4Z7407258G"
+      ],
+      "fit": [
+        "audi:c5-allroad",
+        "audi:c5-a6-quattro"
+      ],
+      "confidence_default": "medium",
+      "notes": "Allroad C5 knuckles from legacy extract (rear L/R + front) — verify which sides we have on photos",
+      "oem_status": "catalog",
+      "price": "20 USD/шт"
+    },
+    {
+      "id": 12,
+      "name": "Приводи задні",
+      "oem": [
+        "4Z7521101",
+        "4Z7521102"
+      ],
+      "fit": [
+        "audi:c5-allroad",
+        "audi:c5-a6-quattro"
+      ],
+      "confidence_default": "medium",
+      "notes": "Allroad C5 rear driveshafts; legacy extract; same 2.5 TDI donor",
+      "oem_status": "catalog",
+      "price": "1 000 грн/компл."
+    },
+    {
+      "id": 13,
+      "name": "Гальмівні диски передні (нові)",
+      "oem": [
+        "4B3615601A"
+      ],
+      "fit": [
+        "audi:c5-allroad",
+        "audi:c5-a6-quattro"
+      ],
+      "confidence_default": "medium",
+      "notes": "Front brake discs (new) — legacy extract 4B3615601A; confirm size vs Allroad",
+      "oem_status": "catalog",
+      "price": "2 500 грн/компл."
+    },
+    {
+      "id": 14,
+      "name": "Корпус повітряного фільтра",
+      "oem": [
+        "4B0133837F",
+        "4B0 133 837 F",
+        "4Z0129607"
+      ],
+      "fit": [
+        "audi:c5-allroad",
+        "audi:c5-a6-quattro"
+      ],
+      "confidence_default": "medium",
+      "notes": "Typical A6/Allroad C5 2.5 TDI airbox; also legacy 4Z0129607 — confirm on shell; same donor",
+      "oem_status": "catalog",
+      "price": "800 грн"
+    },
+    {
+      "id": 15,
+      "name": "Dynamic Drive стабілізатор задній",
+      "oem": [
+        "37126780010",
+        "37 12 6 780 010",
+        "37126752801"
+      ],
+      "fit": [
+        "bmw:e65",
+        "bmw:e66"
+      ],
+      "confidence_default": "high",
+      "notes": "Rear active stabilizer; same E65 donor as other BMW parts",
+      "oem_status": "confirmed",
+      "price": "2 000 грн/компл."
+    },
+    {
+      "id": 16,
+      "name": "Цапфи (задня ліва + передня права)",
+      "oem": [
+        "33326763119",
+        "33 32 6 763 119",
+        "31216753462",
+        "31 21 6 753 462"
+      ],
+      "fit": [
+        "bmw:e65",
+        "bmw:e66"
+      ],
+      "confidence_default": "medium",
+      "notes": "E65: rear left carrier 33326763119 (+supersession 33326775079); front right 31216753462 — confirm stamps; same E65 donor; color cosmetic",
+      "oem_status": "catalog",
+      "price": "20 USD/шт"
+    },
+    {
+      "id": 17,
+      "name": "Колодки стоянкового гальма (комплект)",
+      "oem": [
+        "34416761293",
+        "34 41 6 761 293"
+      ],
+      "fit": [
+        "bmw:e65",
+        "bmw:e66"
+      ],
+      "confidence_default": "high",
+      "notes": "E65 parking brake shoe repair kit (common ETK); same E65 donor; color cosmetic",
+      "oem_status": "catalog",
+      "price": "1 000 грн"
+    },
+    {
+      "id": 18,
+      "name": "Важелі задньої підвіски (пара)",
+      "oem": [
+        "6753110",
+        "6 753 110"
+      ],
+      "fit": [
+        "bmw:e65",
+        "bmw:e66"
+      ],
+      "confidence_default": "high",
+      "notes": "Confirm ETK for VIN; same E65 donor; color cosmetic",
+      "oem_status": "confirmed",
+      "price": "80 USD"
+    },
+    {
+      "id": 19,
+      "name": "Корпус масляного фільтра",
+      "oem": [
+        "1437582",
+        "1 437 582"
+      ],
+      "fit": [
+        "bmw:e65",
+        "bmw:e66"
+      ],
+      "confidence_default": "medium",
+      "notes": "BMW 3.0 E65 — confirm engine; same E65 donor; color cosmetic",
+      "oem_status": "confirmed",
+      "price": "1 200 грн"
+    },
+    {
+      "id": 20,
+      "name": "Еластична муфта карданного вала",
+      "oem": [
+        "1229754",
+        "1 229 754",
+        "GAB01-003"
+      ],
+      "fit": [
+        "bmw:e65",
+        "bmw:e66"
+      ],
+      "confidence_default": "high",
+      "notes": "SGF Guibo — also used on other BMWs; confirm RealOEM; same E65 donor; color cosmetic",
+      "oem_status": "confirmed",
+      "price": "40 USD"
+    },
+    {
+      "id": 21,
+      "name": "Крила передні (2R + 2L)",
+      "oem": [
+        "41357061661",
+        "41357061662",
+        "41 35 7 061 661",
+        "41 35 7 061 662"
+      ],
+      "fit": [
+        "bmw:e65"
+      ],
+      "confidence_default": "medium",
+      "notes": "E65 pre-LCI ~2001–2004 fenders L/R; LCI uses 41357138473/474 — we stock pre-LCI style; same E65 donor; color cosmetic",
+      "oem_status": "catalog",
+      "price": "75 USD/шт"
+    },
+    {
+      "id": 22,
+      "name": "Захисний щит / теплозахист АКПП",
+      "oem": [
+        "51757146629",
+        "51 75 7 146 629"
+      ],
+      "fit": [
+        "bmw:e65",
+        "bmw:e66"
+      ],
+      "confidence_default": "low",
+      "notes": "E65 underfloor gearbox coating/shield candidate 51757146629 — confirm vs photo A91–92; same E65 donor",
+      "oem_status": "catalog",
+      "price": "2 200 грн"
+    },
+    {
+      "id": 23,
+      "name": "Турбіна Garrett",
+      "oem": [
+        "A6420900280",
+        "A 642 090 02 80",
+        "757608-0001",
+        "757608-1",
+        "765155-4"
+      ],
+      "fit": [
+        "mb:om642",
+        "mb:gl-x164",
+        "mb:ml-w164"
+      ],
+      "confidence_default": "high",
+      "notes": "GL 320 CDI on tag; OM642 family — confirm chassis",
+      "oem_status": "confirmed",
+      "price": "12 300 грн"
+    },
+    {
+      "id": 24,
+      "name": "Насос ГУР",
+      "oem": [
+        "6760074042",
+        "6774445-02"
+      ],
+      "fit": [
+        "bmw:e65",
+        "bmw:e66"
+      ],
+      "confidence_default": "high",
+      "notes": "LUK / ZF; same E65 donor; color cosmetic",
+      "oem_status": "confirmed",
+      "price": "120 USD"
+    },
+    {
+      "id": 25,
+      "name": "Короб / лоток запаски",
+      "oem": [
+        "A4478900507",
+        "A 447 890 05 07"
+      ],
+      "fit": [
+        "mb:vito-v-class"
+      ],
+      "confidence_default": "medium",
+      "notes": "Vito / V-Class family article",
+      "oem_status": "confirmed",
+      "price": "80 USD"
+    },
+    {
+      "id": 26,
+      "name": "Повітроводи салону (дефлектори) ×4",
+      "oem": [
+        "A1408300154",
+        "A1408300254",
+        "A1408300754",
+        "140 830 01 54",
+        "140 830 02 54"
+      ],
+      "fit": [
+        "mb:w140"
+      ],
+      "confidence_default": "medium",
+      "notes": "W140 dash vents ×4; L/R/center family; color cosmetic — physical fit W140",
+      "oem_status": "catalog",
+      "price": "60 USD"
+    },
+    {
+      "id": 27,
+      "name": "Бардачок + механізми",
+      "oem": [
+        "1408301285",
+        "140 830 12 85"
+      ],
+      "fit": [
+        "mb:w140"
+      ],
+      "confidence_default": "high",
+      "notes": "W140 glovebox; same W140 donor; color cosmetic",
+      "oem_status": "confirmed",
+      "price": "70 USD"
+    },
+    {
+      "id": 28,
+      "name": "Куліса АКПП",
+      "oem": [
+        "A1402770198",
+        "A 140 277 01 98",
+        "A1402670637",
+        "A 140 267 06 37"
+      ],
+      "fit": [
+        "mb:w140"
+      ],
+      "confidence_default": "high",
+      "notes": "W140 5.0 — confirm transmission; same W140 donor; color cosmetic",
+      "oem_status": "confirmed",
+      "price": "2 500 грн"
+    },
+    {
+      "id": 29,
+      "name": "Радіатор / охолоджувач",
+      "oem": [
+        "1405000000",
+        "140 500 00 00"
+      ],
+      "fit": [
+        "mb:w140"
+      ],
+      "confidence_default": "high",
+      "notes": "Behr W140; same W140 donor; color cosmetic",
+      "oem_status": "confirmed",
+      "price": "2 000 грн"
+    },
+    {
+      "id": 30,
+      "name": "Поводки / щітки лобового",
+      "oem": [
+        "8E1955407C",
+        "8E1955408C",
+        "8E1 955 407 C",
+        "8E1 955 408 C"
+      ],
+      "fit": [
+        "audi:a4"
+      ],
+      "confidence_default": "medium",
+      "notes": "Audi A4 B6/B7 front wiper arms pair (common); physical fit A4 — confirm gen on photos",
+      "oem_status": "catalog",
+      "price": "500 грн"
+    },
+    {
+      "id": 31,
+      "name": "Поводок / щітка",
+      "oem": [
+        "A1408203344",
+        "A1408203444",
+        "140 820 33 44",
+        "140 820 34 44"
+      ],
+      "fit": [
+        "mb:w140"
+      ],
+      "confidence_default": "medium",
+      "notes": "W140 wiper arm L/R family; same W140 donor; physical fit",
+      "oem_status": "catalog",
+      "price": "500 грн"
+    },
+    {
+      "id": 32,
+      "name": "Комплект щіток + омивач + підігрів омивача",
+      "oem": [
+        "61617208691",
+        "61617208692",
+        "61 61 7 208 691",
+        "61 61 7 208 692"
+      ],
+      "fit": [
+        "bmw:e65",
+        "bmw:e66"
+      ],
+      "confidence_default": "medium",
+      "notes": "E65 wet-arm heated wiper L/R (+ washer in arm); kit may include more — same E65 donor",
+      "oem_status": "catalog",
+      "price": "50 USD"
+    },
+    {
+      "id": 33,
+      "name": "Пружини задні (пара)",
+      "oem": [
+        "1J0511115",
+        "1J0 511 115"
+      ],
+      "fit": [
+        "skoda:tour"
+      ],
+      "confidence_default": "low",
+      "notes": "Octavia Tour rear spring family 1J0511115* — many suffixes/stripe codes; match paint marks on springs",
+      "oem_status": "catalog",
+      "price": "600 грн"
+    },
+    {
+      "id": 34,
+      "name": "Петлі капота (одна пара)",
+      "oem": [
+        "4B0823301D",
+        "4B0823302D",
+        "8E0823301G"
+      ],
+      "fit": [
+        "audi:c5-a6-quattro",
+        "audi:c5-allroad"
+      ],
+      "confidence_default": "medium",
+      "notes": "A6 C5 hinges; 8E0 also B6 A4 family — confirm; same Allroad C5 2.5 TDI donor",
+      "oem_status": "confirmed",
+      "price": "600 грн"
+    },
+    {
+      "id": 35,
+      "name": "Шторка / поличка багажника",
+      "oem": [
+        "85540-H1003",
+        "85540H1003"
+      ],
+      "fit": [
+        "hyundai:terracan"
+      ],
+      "confidence_default": "low",
+      "notes": "Terracan cargo/parcel cover family 85540-H10**; physical fit Terracan; color cosmetic",
+      "oem_status": "catalog",
+      "price": "50 USD"
+    },
+    {
+      "id": 36,
+      "name": "Бампер передній + комплект ПТФ (1)",
+      "oem": [
+        "51117042706",
+        "51 11 7 042 706",
+        "63178379683",
+        "63178379684"
+      ],
+      "fit": [
+        "bmw:e65"
+      ],
+      "confidence_default": "medium",
+      "notes": "E65 ~2001–2004 front bumper panel 51117042706; ПТФ till 03/2005 63178379683/684 (alt from 03/2005 63176943415/416); same E65 donor; color cosmetic",
+      "oem_status": "catalog",
+      "price": "8 200 грн"
+    },
+    {
+      "id": 37,
+      "name": "Бак пального",
+      "oem": [],
+      "fit": [
+        "audi:c5-allroad"
+      ],
+      "confidence_default": "high",
+      "notes": "Allroad C5 2.5 TDI fuel tank; inv. 223; same donor; color N/A",
+      "oem_status": "missing",
+      "price": "1 000 грн"
+    },
+    {
+      "id": 38,
+      "name": "Стартер",
+      "oem": [
+        "63293537",
+        "M70R"
+      ],
+      "fit": [
+        "unknown"
+      ],
+      "confidence_default": "low",
+      "notes": "Magneti Marelli — confirm application by OEM lookup",
+      "oem_status": "confirmed",
+      "price": "2 500 грн"
+    },
+    {
+      "id": 39,
+      "name": "Троси (капот + ручник)",
+      "oem": [
+        "7L0712306D"
+      ],
+      "fit": [
+        "unknown"
+      ],
+      "confidence_default": "low",
+      "notes": "VAG 7L0 — Touareg / related; confirm via 7zap",
+      "oem_status": "confirmed",
+      "price": "50 USD"
+    },
+    {
+      "id": 40,
+      "name": "Підвісний підшипник / опора кардана",
+      "oem": [
+        "26127513218",
+        "26 12 7 513 218",
+        "18.20",
+        "6875168"
+      ],
+      "fit": [
+        "bmw:e65",
+        "bmw:e66"
+      ],
+      "confidence_default": "high",
+      "notes": "Confirmed E65 centre mount; casting 18.20 / 6875 168; same donor as Guibo; same E65 donor; color cosmetic",
+      "oem_status": "confirmed",
+      "price": "15 USD"
+    }
+  ]
+}

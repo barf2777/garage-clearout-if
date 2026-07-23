@@ -260,6 +260,94 @@
     }
     .dock .btn { width: 100%; }
 
+    /* VIN checker */
+    .vin-box {
+      margin: 0 0 1.25rem;
+      padding: 1.1rem 1.15rem 1.2rem;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: linear-gradient(165deg, #1c2026 0%, #15181c 100%);
+    }
+    .vin-box h2 {
+      margin: 0 0 0.35rem;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+    .vin-box .vin-lead {
+      margin: 0 0 0.9rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .vin-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      align-items: stretch;
+    }
+    .vin-form input {
+      flex: 1 1 12rem;
+      min-width: 0;
+      font: inherit;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.75rem 0.85rem;
+      border-radius: 0.7rem;
+      border: 1px solid var(--line);
+      background: #0e1012;
+      color: var(--text);
+    }
+    .vin-form input:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+    .vin-form button {
+      flex: 0 0 auto;
+      font: inherit;
+      font-weight: 600;
+      padding: 0.75rem 1.1rem;
+      border-radius: 0.7rem;
+      border: none;
+      background: var(--accent);
+      color: #121416;
+      cursor: pointer;
+    }
+    .vin-form button:hover { background: #e0b020; }
+    .vin-meta {
+      margin: 0.75rem 0 0;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .vin-meta .warn { color: #e8a0a0; }
+    .vin-results { margin-top: 1rem; }
+    .vin-results h3 {
+      margin: 0.85rem 0 0.45rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+    .vin-hit {
+      margin: 0 0 0.55rem;
+      padding: 0.65rem 0.75rem;
+      border-radius: 0.65rem;
+      border: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.22);
+      font-size: 0.88rem;
+    }
+    .vin-hit a { font-size: 0.82rem; }
+    .vin-hit .vin-hit-top {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
+      justify-content: space-between;
+      margin-bottom: 0.25rem;
+    }
+    .vin-hit .money { font-weight: 600; color: var(--accent); }
+    .vin-empty { font-size: 0.88rem; color: var(--muted); }
+
     @media (min-width: 520px) {
       .dock-inner { grid-template-columns: repeat(4, 1fr); }
     }
@@ -283,6 +371,7 @@
 
     <nav class="toc" aria-label="Оголошення">
       <div class="toc-scroll">
+        <a href="#vin">VIN</a>
         <a href="#turbo">Турбіна</a>
         <a href="#reyka">Рейка</a>
         <a href="#allroad">Allroad</a>
@@ -291,6 +380,30 @@
         <a href="#misc">Інше</a>
       </div>
     </nav>
+
+    <section class="vin-box" id="vin" aria-labelledby="vin-title">
+      <h2 id="vin-title">Перевірка VIN</h2>
+      <p class="vin-lead">
+        Введіть VIN авто — покажемо, які позиції з нашого складу <em>можливо</em> підходять
+        (правила по марці/кузову, не офіційний ETK). Перед покупкою підтвердіть OEM за посиланням або напишіть нам.
+      </p>
+      <form class="vin-form" id="vin-form">
+        <input
+          id="vin-input"
+          name="vin"
+          type="text"
+          inputmode="text"
+          autocomplete="off"
+          spellcheck="false"
+          maxlength="20"
+          placeholder="17 символів VIN"
+          aria-label="VIN код"
+        />
+        <button type="submit">Перевірити</button>
+      </form>
+      <p class="vin-meta" id="vin-meta" hidden></p>
+      <div class="vin-results" id="vin-results" hidden></div>
+    </section>
 
     <main id="listings">
       <!-- CONFIG: set olx URLs in data-olx after you publish -->
@@ -470,6 +583,7 @@
     </div>
   </div>
 
+  <script src="vin-fit.js"></script>
   <script>
     /**
      * Заповніть перед шарингом у чати.
@@ -616,6 +730,131 @@
       { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
     );
     sections.forEach((s) => io.observe(s));
+
+    /* VIN fit UI */
+    let fitParts = [];
+    const vinForm = document.getElementById("vin-form");
+    const vinInput = document.getElementById("vin-input");
+    const vinMeta = document.getElementById("vin-meta");
+    const vinResults = document.getElementById("vin-results");
+
+    function renderHit(part) {
+      const div = document.createElement("div");
+      div.className = "vin-hit";
+      const top = document.createElement("div");
+      top.className = "vin-hit-top";
+      const title = document.createElement("strong");
+      title.textContent = "#" + part.id + " · " + part.name;
+      top.appendChild(title);
+      if (part.price) {
+        const pr = document.createElement("span");
+        pr.className = "money";
+        pr.textContent = part.price;
+        top.appendChild(pr);
+      }
+      div.appendChild(top);
+      if (part.notes) {
+        const n = document.createElement("div");
+        n.style.color = "var(--muted)";
+        n.style.fontSize = "0.82rem";
+        n.textContent = part.notes;
+        div.appendChild(n);
+      }
+      const oems = part.oem || [];
+      const seen = new Set();
+      oems.forEach((oem) => {
+        const q = oem.replace(/\s+/g, "");
+        if (!q || seen.has(q) || seen.size >= 3) return;
+        seen.add(q);
+        const links = window.VinFit.oemLinks(oem, part.fit || []);
+        if (!links.length) return;
+        div.appendChild(document.createElement("br"));
+        const a = document.createElement("a");
+        a.href = links[0];
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.textContent = "OEM " + oem + " → каталог";
+        div.appendChild(a);
+      });
+      div.appendChild(document.createElement("br"));
+      const lot = document.createElement("a");
+      lot.href = window.VinFit.listingAnchor(part);
+      lot.textContent = "До оголошення";
+      div.appendChild(lot);
+      return div;
+    }
+
+    function showVin(result) {
+      vinMeta.hidden = false;
+      vinResults.hidden = false;
+      if (result.error) {
+        vinMeta.innerHTML = '<span class="warn">' + result.error + "</span>";
+        vinResults.innerHTML = "";
+        return;
+      }
+      const p = result.profile;
+      let meta =
+        "VIN: <strong>" +
+        result.vin +
+        "</strong> · рік: " +
+        (p.year || "—") +
+        " · " +
+        p.make +
+        " · " +
+        p.certainty;
+      if (!result.check_digit_ok) {
+        meta += ' · <span class="warn">контрольна цифра невірна — перевірте набір</span>';
+      }
+      if (p.tags.length) meta += "<br>Теги: " + p.tags.join(", ");
+      if (p.notes.length) meta += "<br>" + p.notes.map((n) => "· " + n).join("<br>");
+      vinMeta.innerHTML = meta;
+
+      vinResults.innerHTML = "";
+      const addGroup = (label, list) => {
+        const h = document.createElement("h3");
+        h.textContent = label + " (" + list.length + ")";
+        vinResults.appendChild(h);
+        if (!list.length) {
+          const e = document.createElement("p");
+          e.className = "vin-empty";
+          e.textContent = "Немає";
+          vinResults.appendChild(e);
+          return;
+        }
+        list.forEach((part) => vinResults.appendChild(renderHit(part)));
+      };
+      addGroup("Ймовірно підходить", result.likely);
+      addGroup("Можливо / уточнити", result.maybe);
+    }
+
+    fetch("inventory-fit.json")
+      .then((r) => {
+        if (!r.ok) throw new Error("fit json");
+        return r.json();
+      })
+      .then((data) => {
+        fitParts = data.parts || [];
+      })
+      .catch(() => {
+        vinMeta.hidden = false;
+        vinMeta.innerHTML =
+          '<span class="warn">Не вдалося завантажити inventory-fit.json</span>';
+      });
+
+    if (vinForm) {
+      vinForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!window.VinFit) {
+          showVin({ error: "vin-fit.js не завантажився." });
+          return;
+        }
+        if (!fitParts.length) {
+          showVin({ error: "Каталог ще не завантажився — спробуйте за секунду." });
+          return;
+        }
+        showVin(window.VinFit.run(vinInput.value, fitParts));
+      });
+    }
   </script>
 </body>
 </html>
