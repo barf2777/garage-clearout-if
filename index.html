@@ -87,6 +87,12 @@
       gap: 0.5rem;
       margin-top: 1.25rem;
     }
+    .updated {
+      margin: 0.85rem 0 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .updated time { color: var(--text); font-weight: 500; }
     .chip {
       display: inline-flex;
       align-items: center;
@@ -406,6 +412,7 @@
         <span class="chip">Нова Пошта · можна глянути</span>
         <span class="chip">від приватної особи</span>
       </div>
+      <p class="updated">Оновлено: <time id="last-updated" datetime=""></time></p>
     </header>
 
     <nav class="toc" aria-label="Оголошення">
@@ -639,6 +646,9 @@
       viber: "380673659966",
     };
 
+    /** Дата/час оновлення картки (Europe/Kyiv). Оновлюйте при зміні складу / OLX. */
+    const LAST_UPDATED = "2026-07-24T02:26:00+03:00";
+
     /** Після публікації на OLX — вставте URL у data-olx кожного article, або сюди: */
     const OLX_LINKS = {
       turbo: "https://www.olx.ua/d/uk/obyavlenie/turbna-garrett-757608-0001-mercedes-om642-a6420900280-gl-ml-b-u-ID10TN6C.html",
@@ -700,6 +710,22 @@
     wireBtn(wa, waHref(CONTACT.whatsapp), "WhatsApp");
     wireBtn(sg, signalHref(CONTACT.signal), "Signal");
     wireBtn(vb, viberHref(CONTACT.viber), "Viber");
+
+    (function paintUpdated() {
+      const el = document.getElementById("last-updated");
+      if (!el || !LAST_UPDATED) return;
+      const d = new Date(LAST_UPDATED);
+      if (Number.isNaN(d.getTime())) return;
+      el.dateTime = d.toISOString();
+      el.textContent = d.toLocaleString("uk-UA", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "Europe/Kyiv",
+      });
+    })();
 
     /** Підсвітка цін у текстах оголошень */
     const PRICE_RE =
