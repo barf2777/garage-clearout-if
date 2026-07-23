@@ -15,4 +15,4 @@ https://barf2777.github.io/garage-clearout-if/
 ## Edit later
 
 Change `index.html`, commit, push — the site updates.  
-«Сторінку оновлено» is filled from the latest `main` commit via GitHub API (no manual date bump).
+«Інвентар оновлено» is filled from the latest `main` commit via GitHub API (no manual date bump).
