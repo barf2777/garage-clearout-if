@@ -354,6 +354,47 @@
     @media (min-width: 520px) {
       .dock-inner { grid-template-columns: repeat(4, 1fr); }
     }
+
+    /* Scroll to top — sits above messenger dock */
+    .to-top {
+      position: fixed;
+      z-index: 40;
+      right: max(var(--pad), calc((100% - var(--max)) / 2 + var(--pad)));
+      bottom: calc(7.25rem + env(safe-area-inset-bottom));
+      width: 2.75rem;
+      height: 2.75rem;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(26, 29, 33, 0.94);
+      backdrop-filter: blur(10px);
+      color: var(--accent);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s, border-color 0.15s, background 0.15s;
+    }
+    .to-top.is-visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: none;
+    }
+    .to-top:hover {
+      border-color: var(--accent-dim);
+      background: var(--bg-elev);
+      color: #f0c14d;
+    }
+    .to-top:active { transform: scale(0.96); }
+    .to-top svg { display: block; }
+    @media (min-width: 520px) {
+      .to-top { bottom: calc(4.75rem + env(safe-area-inset-bottom)); }
+    }
   </style>
 </head>
 <body>
@@ -580,6 +621,12 @@
     </div>
   </div>
 
+  <button type="button" class="to-top" id="to-top" aria-label="Нагору">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 5v14M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
   <script src="vin-fit.js"></script>
   <script>
     /**
@@ -700,6 +747,16 @@
         btn.target = "_blank";
         btn.rel = "noopener noreferrer";
       }
+    });
+
+    const toTop = document.getElementById("to-top");
+    const toggleToTop = () => {
+      toTop.classList.toggle("is-visible", window.scrollY > 320);
+    };
+    toggleToTop();
+    window.addEventListener("scroll", toggleToTop, { passive: true });
+    toTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
     /* Active TOC highlight */
