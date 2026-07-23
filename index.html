@@ -749,12 +749,6 @@
       };
       fmt(new Date(LAST_UPDATED_FALLBACK));
       try {
-        const cacheKey = "gc-pages-commit-date";
-        const cached = sessionStorage.getItem(cacheKey);
-        if (cached) {
-          fmt(new Date(cached));
-          return;
-        }
         const res = await fetch(
           "https://api.github.com/repos/" + PAGES_REPO + "/commits/main",
           { headers: { Accept: "application/vnd.github+json" } }
@@ -763,7 +757,6 @@
         const data = await res.json();
         const iso = data.commit?.committer?.date || data.commit?.author?.date;
         if (!iso) return;
-        sessionStorage.setItem(cacheKey, iso);
         fmt(new Date(iso));
       } catch (_) {
         /* leave fallback */
