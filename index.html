@@ -431,7 +431,6 @@
 Відправка Новою Поштою, можна оглянути на відділенні. Фото свої.</div>
         <div class="listing-actions">
           <a class="btn btn-primary js-olx" href="#" aria-disabled="true">OLX незабаром</a>
-          <a class="btn btn-ghost js-ask" href="#contact">Написати в чат</a>
         </div>
       </article>
 
@@ -453,7 +452,6 @@
 Перед покупкою надішліть VIN — перевіримо сумісність.</div>
         <div class="listing-actions">
           <a class="btn btn-primary js-olx" href="#" aria-disabled="true">OLX незабаром</a>
-          <a class="btn btn-ghost js-ask" href="#contact">Написати в чат</a>
         </div>
       </article>
 
@@ -488,7 +486,6 @@
 Рейка рульового механізму 4B1… і турбокомпресор OM642 — окремими оголошеннями вище на сторінці.</div>
         <div class="listing-actions">
           <a class="btn btn-primary js-olx" href="#" aria-disabled="true">OLX незабаром</a>
-          <a class="btn btn-ghost js-ask" href="#contact">Написати в чат</a>
         </div>
       </article>
 
@@ -519,7 +516,6 @@
 • Комплект щіток склоочисника + омивач з підігрівом омивача, E65 — каталог 61 61 7 208 691 / 692 — 50 USD</div>
         <div class="listing-actions">
           <a class="btn btn-primary js-olx" href="#" aria-disabled="true">OLX незабаром</a>
-          <a class="btn btn-ghost js-ask" href="#contact">Написати в чат</a>
         </div>
       </article>
 
@@ -546,7 +542,6 @@
   (артикул сімейства V-Class / Vito — перевірте сумісність зі своїм авто)</div>
         <div class="listing-actions">
           <a class="btn btn-primary js-olx" href="#" aria-disabled="true">OLX незабаром</a>
-          <a class="btn btn-ghost js-ask" href="#contact">Написати в чат</a>
         </div>
       </article>
 
@@ -566,7 +561,6 @@
 • Поводки / щітки склоочисника лобового скла, Audi A4 — каталог 8E1 955 407 C / 408 C — 500 грн</div>
         <div class="listing-actions">
           <a class="btn btn-primary js-olx" href="#" aria-disabled="true">OLX незабаром</a>
-          <a class="btn btn-ghost js-ask" href="#contact">Написати в чат</a>
         </div>
       </article>
     </main>
@@ -706,17 +700,6 @@
         btn.target = "_blank";
         btn.rel = "noopener noreferrer";
       }
-      const ask = el.querySelector(".js-ask");
-      ask.addEventListener("click", (e) => {
-        const title = el.querySelector("h2")?.textContent?.trim() || id;
-        if (tHref) {
-          e.preventDefault();
-          const msg = encodeURIComponent(
-            "Привіт! Пишу з приводу «" + title + "» (розпродаж з гаража). Ще актуально?"
-          );
-          window.location.href = tHref.includes("?") ? tHref : tHref + "?text=" + msg;
-        }
-      });
     });
 
     /* Active TOC highlight */
