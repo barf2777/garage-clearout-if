@@ -364,20 +364,19 @@
       width: 2.75rem;
       height: 2.75rem;
       padding: 0;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: rgba(26, 29, 33, 0.94);
-      backdrop-filter: blur(10px);
-      color: var(--accent);
+      border: none;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #121416;
       cursor: pointer;
       display: grid;
       place-items: center;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
       transform: translateY(8px);
-      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s, border-color 0.15s, background 0.15s;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s, background 0.15s;
     }
     .to-top.is-visible {
       opacity: 1;
@@ -385,12 +384,8 @@
       pointer-events: auto;
       transform: none;
     }
-    .to-top:hover {
-      border-color: var(--accent-dim);
-      background: var(--bg-elev);
-      color: #f0c14d;
-    }
-    .to-top:active { transform: scale(0.96); }
+    .to-top:hover { background: #e0b020; }
+    .to-top:active { transform: scale(0.95); }
     .to-top svg { display: block; }
     @media (min-width: 520px) {
       .to-top { bottom: calc(4.75rem + env(safe-area-inset-bottom)); }
@@ -622,8 +617,8 @@
   </div>
 
   <button type="button" class="to-top" id="to-top" aria-label="Нагору">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M12 5v14M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6 14l6-6 6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
 
