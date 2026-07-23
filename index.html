@@ -187,6 +187,17 @@
       font-size: 0.92rem;
       color: #c8ced6;
     }
+    .money {
+      display: inline;
+      font-weight: 700;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 0.08em 0.38em;
+      border-radius: 0.3em;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+      white-space: nowrap;
+    }
     .listing-actions {
       display: flex;
       flex-wrap: wrap;
@@ -542,6 +553,34 @@
     wireBtn(wa, waHref(CONTACT.whatsapp), "WhatsApp");
     wireBtn(sg, signalHref(CONTACT.signal), "Signal");
     wireBtn(vb, viberHref(CONTACT.viber), "Viber");
+
+    /** Підсвітка цін у текстах оголошень */
+    const PRICE_RE =
+      /(\d{1,3}(?:\s\d{3})*(?:[.,]\d+)?\s*(?:грн|USD)(?:\/(?:шт|комплект|пара))?)/g;
+    function highlightPrices(root) {
+      const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      while (walk.nextNode()) nodes.push(walk.currentNode);
+      nodes.forEach((textNode) => {
+        const text = textNode.nodeValue;
+        if (!text || !PRICE_RE.test(text)) return;
+        PRICE_RE.lastIndex = 0;
+        const frag = document.createDocumentFragment();
+        let last = 0;
+        let m;
+        while ((m = PRICE_RE.exec(text))) {
+          if (m.index > last) frag.appendChild(document.createTextNode(text.slice(last, m.index)));
+          const mark = document.createElement("span");
+          mark.className = "money";
+          mark.textContent = m[0];
+          frag.appendChild(mark);
+          last = m.index + m[0].length;
+        }
+        if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+        textNode.parentNode.replaceChild(frag, textNode);
+      });
+    }
+    document.querySelectorAll(".body").forEach(highlightPrices);
 
     document.querySelectorAll(".listing").forEach((el) => {
       const id = el.id;
