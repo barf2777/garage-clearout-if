@@ -69,14 +69,39 @@
     return vin[8] === expect;
   }
 
+  function modelYearCandidates(vin) {
+    if (vin.length < 10) return [];
+    const code = vin[9];
+    const modern = YEAR_CODES[code];
+    if (modern == null) return [];
+    if (/\d/.test(code)) return [modern];
+    const older = modern - 30;
+    if (older >= 1980 && older <= 2000) return [modern, older];
+    return [modern];
+  }
+
   function modelYear(vin) {
-    return YEAR_CODES[vin[9]] || null;
+    const cands = modelYearCandidates(vin);
+    return cands.length ? cands[0] : null;
+  }
+
+  function resolveModelYear(vin, wmi) {
+    const cands = modelYearCandidates(vin);
+    if (!cands.length) return null;
+    if (["4JG", "4J4", "WDC", "WDD", "WDF", "WDY"].includes(wmi) || wmi.startsWith("W1")) {
+      return cands[0];
+    }
+    if (wmi === "WDB" && cands.length > 1) {
+      const older = cands[1];
+      if (older >= 1991 && older <= 1999) return older;
+    }
+    return cands[0];
   }
 
   function decodeVin(vin) {
     const wmi = vin.slice(0, 3);
     const vds = vin.slice(3, 9);
-    const year = modelYear(vin);
+    const year = resolveModelYear(vin, wmi);
     let make = "unknown";
     const chassis = [];
     const engine = [];
@@ -102,9 +127,8 @@
         certainty = "low";
         notes.push("BMW + рік епохи E65 — кузов по VIN непевний");
       } else {
-        tags.add("bmw:e65");
         certainty = "low";
-        notes.push("BMW розпізнано; кузов неясний — E65 лише як м’який збіг");
+        notes.push("BMW поза вікном E65/E66 — автоматично не підбираємо деталі 7 серії");
       }
     } else if (["WAU", "TRU", "WA1", "WUA"].includes(wmi) || wmi.startsWith("WA")) {
       make = "audi";
@@ -139,11 +163,11 @@
       wmi.startsWith("WD")
     ) {
       make = "mb";
-      if (year && year >= 1991 && year <= 1999) {
+      if (year && year >= 1991 && year <= 1999 && vds.startsWith("GA")) {
         tags.add("mb:w140");
         chassis.push("w140");
         certainty = "medium";
-        notes.push("Рік Mercedes у вікні W140");
+        notes.push("W140 S-Class (WDBGA + рік 90-х; літера року з 30-річним циклом)");
       }
       if (year && year >= 2005 && year <= 2013) {
         tags.add("mb:om642");
@@ -154,7 +178,7 @@
         if (certainty === "low") certainty = "medium";
         notes.push("MB середини 2000-х — можливе сімейство турбіни OM642");
       }
-      if (wmi === "WDF" || (year && year >= 2014 && year <= 2026)) {
+      if (wmi === "WDF") {
         tags.add("mb:vito-v-class");
         notes.push("Тег Vito/V-Class м’який — підтвердіть деталь A447");
       }
@@ -214,6 +238,8 @@
       if (profile.certainty === "low") return "maybe";
       return "likely";
     }
+    // Same make, no tag overlap → maybe only when VIN already has stock tags
+    if (!vinTags.size) return null;
     const families = MAKE_FAMILY[profile.make] || new Set();
     const partMakes = new Set([...(part.fit || [])].map((t) => TAG_MAKE[t] || "unknown"));
     for (const m of partMakes) if (families.has(m)) return "maybe";
